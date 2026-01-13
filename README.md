@@ -1,5 +1,30 @@
-# Vue 3 + Vite
+# QbitLink
+Умноже сокращение ссылок с самоуничтожением и аналитикой.
+Позволяет создавать короткие ссылки, которые можно ограничить по времени или количеству переходов, а также отслеживать IP.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Технологии
+**Фронтенд:**
+- Vue 3
+- Vite
+- Tailwind CSS
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Установка и дальнейшая разработка
+
+### Клонирование репозитория
+```bash
+git clone https://github.com/VladMontana/Frontend-Qbitlink.git
+```
+
+### Установка зависимостей 
+```bash
+npm install
+npm run dev
+```
+
+## Планируемое развитие
+- [ ] Добавление функционала
+- [ ] Добавление аналитики (IP-адреса, самоуничтожение ссылок)
+- [ ] Добавление статистики переходов по ссылке
+
+## Лицензия 
+Этот проект лицензирован под [MIT License](./LICENSE)
