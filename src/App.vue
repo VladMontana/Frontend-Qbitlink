@@ -18,10 +18,10 @@
                  text-[#B0C4DE]
                  drop-shadow-[0_0_10px_rgba(176,196,222,0.35)]"
         >
-          Qbit<span class="text-slate-200">Link</span>
+        Universe<span class="text-slate-200">Link</span>
         </h1>
         <p class="text-sm text-slate-400 mt-1">
-          Умное сокращение ссылок с самоуничтожением и аналитикой
+          Сокращение ссылок с самоуничтожением и аналитикой
         </p>
       </header>
 
