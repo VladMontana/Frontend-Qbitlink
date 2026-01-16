@@ -4,13 +4,17 @@
            bg-linear-to-br from-slate-900 via-slate-900 to-slate-950
            text-slate-100 flex items-center justify-center px-4"
   >
+  <div class="starry-layer absolute inset-0 z-0 pointer-events-none">
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+  </div>
     <!-- Общее фоновое свечение -->
     <div
       class="pointer-events-none absolute inset-0
              bg-[radial-gradient(ellipse_at_top,rgba(176,196,222,0.12),transparent_60%)]">
     </div>
 
-    <div class="relative w-full max-w-3xl space-y-6">
+    <div class="relative w-full max-w-3xl space-y-6 z-10">
       <!-- Логотип -->
       <header class="text-center">
         <h1
@@ -31,7 +35,7 @@
           class="relative"
           :class="{ 'animate-pulse-slow': isFocused || url.length > 0 }"
         >
-          <!-- ФИОЛЕТОВОЕ НЕОНОВОЕ СВЕЧЕНИЕ (СОХРАНЕНО) -->
+          <!-- Фиолетовое свечение -->
           <div
             class="pointer-events-none absolute inset-0 rounded-full
                    bg-linear-to-r from-purple-500 via-fuchsia-500 to-indigo-500
@@ -72,7 +76,7 @@
                        text-[#B0C4DE] focus:ring-[#B0C4DE]/70"
               />
               <label for="by-time" class="flex-1 text-sm">
-                Самоуничтожить по времени (Секунды)
+                Самоуничтожить по времени (часы)
               </label>
               <input
                 v-if="options.byTime.enabled"
@@ -107,19 +111,6 @@
                        focus:outline-none focus:ring-1 focus:ring-[#B0C4DE]/70"
                 placeholder="N"
               />
-            </div>
-
-            <div class="flex items-center gap-2">
-              <input
-                id="track-ip"
-                type="checkbox"
-                v-model="options.trackIp"
-                class="h-4 w-4 rounded border-slate-500 bg-slate-900
-                       text-[#B0C4DE] focus:ring-[#B0C4DE]/70"
-              />
-              <label for="track-ip" class="text-sm">
-                Отслеживать IP
-              </label>
             </div>
 
             <button
@@ -303,5 +294,85 @@ onMounted(fetchHistory)
 @keyframes pulse-slow {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.01); }
+}
+
+.starry-layer {
+  contain: strict;           
+}
+
+.starry-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(1px  circle at  7%  12%, #d8b4fe 100%, transparent),
+    radial-gradient(1.2px circle at 19%  68%, #c084fc 100%, transparent),
+    radial-gradient(0.9px circle at 34%  25%, #a78bfa 100%, transparent),
+    radial-gradient(1.1px circle at 48%  79%, #d8b4fe88 100%, transparent),
+    radial-gradient(0.8px circle at 61%  16%, #c084fc99 100%, transparent),
+    radial-gradient(1.3px circle at 76%  61%, #a78bfa77 100%, transparent),
+    radial-gradient(1px   circle at 89%  38%, #d8b4fe66 100%, transparent),
+    radial-gradient(1.1px circle at  4%  85%, #c084fc88 100%, transparent),
+    radial-gradient(0.95px circle at 27%  44%, #a78bfa99 100%, transparent);
+    /* Чем больше строк — тем плотнее небо */
+  background-size: 200px 200px;
+  opacity: 0.75;
+  animation: twinkle-small 13s ease-in-out infinite alternate;
+}
+
+.starry-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(2.5px circle at 14%  32%, #c084fc, transparent 70%),
+    radial-gradient(2.8px circle at 45%   9%, #a78bfa, transparent 70%),
+    radial-gradient(3px   circle at 71%  71%, #d8b4fe, transparent 70%),
+    radial-gradient(2.3px circle at 82%  21%, #c084fcbb 100%, transparent),
+    radial-gradient(2.7px circle at  6%  84%, #a78bfaaa 100%, transparent),
+    radial-gradient(2.4px circle at 58%  48%, #d8b4fe99 100%, transparent);
+  background-size: 360px 360px;
+  opacity: 0.48;
+  animation: twinkle-large 10s ease-in-out infinite alternate;
+}
+
+.shooting-star {
+  position: absolute;
+  top: -15%;
+  left: -25%;
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(130deg, transparent, #e9d5ff 40%, #c084fc 50%, #a78bfa 60%, transparent);
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0;
+  transform: rotate(40deg);
+  animation: shoot 18s linear infinite;
+  animation-delay: 3s;
+}
+
+.shooting-star:nth-child(2) {
+  animation-delay: 9s;
+  animation-duration: 15s;
+  width: 190px;
+  transform: rotate(55deg);
+  filter: blur(1.4px);
+}
+
+@keyframes twinkle-small {
+  0%, 100% { opacity: 0.68; }
+  50%      { opacity: 0.96; }
+}
+
+@keyframes twinkle-large {
+  0%, 100% { opacity: 0.4; filter: brightness(0.85); }
+  50%      { opacity: 0.82; filter: brightness(1.4); }
+}
+
+@keyframes shoot {
+  0%    { opacity: 0; transform: translate(0, 0) rotate(var(--rotate, 40deg)); }
+  3%    { opacity: 0.85; }
+  10%   { opacity: 0.85; transform: translate(180vw, 180vh) rotate(var(--rotate, 40deg)); }
+  100%  { opacity: 0; transform: translate(180vw, 180vh) rotate(var(--rotate, 40deg)); }
 }
 </style>
