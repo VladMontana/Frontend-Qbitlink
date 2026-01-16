@@ -11,7 +11,7 @@
     <!-- Общее фоновое свечение -->
     <div
       class="pointer-events-none absolute inset-0
-             bg-[radial-gradient(ellipse_at_top,rgba(176,196,222,0.12),transparent_60%)]">
+             bbg-[radial-gradient(circle,rgba(176,196,222,0.05),transparent_75%)]">
     </div>
 
     <div class="relative w-full max-w-3xl space-y-6 z-10">
