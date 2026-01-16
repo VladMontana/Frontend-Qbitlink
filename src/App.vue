@@ -25,7 +25,7 @@
         Universe<span class="text-slate-200">Link</span>
         </h1>
         <p class="text-sm text-slate-400 mt-1">
-          Сокращение ссылок с самоуничтожением и аналитикой
+          Сервис по сокращению ссылок с самоуничтожением и аналитикой
         </p>
       </header>
 
